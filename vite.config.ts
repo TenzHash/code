@@ -3,7 +3,9 @@
   import react from '@vitejs/plugin-react-swc';
   import path from 'path';
 
-  export default defineConfig({
+export default defineConfig({
+  // Use relative base so the built app works on static hosts and subpaths (e.g., GitHub Pages)
+  base: './',
     plugins: [react()],
     resolve: {
       extensions: ['.js', '.jsx', '.ts', '.tsx', '.json'],
@@ -50,10 +52,10 @@
         '@': path.resolve(__dirname, './src'),
       },
     },
-    build: {
-      target: 'esnext',
-      outDir: 'build',
-    },
+  build: {
+    target: 'esnext',
+    outDir: 'dist',
+  },
     server: {
       port: 3000,
       open: true,
